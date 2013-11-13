@@ -1,0 +1,49 @@
+package towerDefense;
+import java.awt.Color;
+
+
+public class Knopf {
+	private int posx;
+	private int posy;
+	private int breite;
+	private int höhe;
+	private Color colorNormal;
+	private Color colorAction;
+	private boolean action = false;
+	
+	Knopf(int posx, int posy, int breite, int höhe, Color color1, Color color2){
+		this.posx = posx;
+		this.posy = posy;
+		this.breite = breite;
+		this.höhe = höhe;
+		this.colorNormal = color1;
+		this.colorAction = color2;
+	}
+	
+	public int getPosX(){
+		return posx;
+	}
+	public int getPosY(){
+		return posy;
+	}
+	public int getBreite(){
+		return breite;
+	}
+	public int getHöhe(){
+		return höhe;
+	}
+	public Color getColor(){
+		if(action){
+			return colorAction;
+		}
+		else{
+			return colorNormal;
+		}
+	}
+	public boolean getAction(){
+		return action;
+	}
+	public void setAction(boolean action){
+		this.action = action;
+	}
+}

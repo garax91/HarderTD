@@ -1,0 +1,21 @@
+
+package towerDefense;
+
+public class Turm {
+	private final int posx;
+	private final int posy;
+	private static boolean turmAusgewählt = false;
+	
+	Turm(int x, int y){
+		posx = x;
+		posy = y;
+	}
+	
+	public static void setTurmAusgewählt(boolean b){
+		turmAusgewählt =  b;
+	}
+	public static boolean getTurmAusgewählt(){
+		return turmAusgewählt;
+	}
+
+}

@@ -1,0 +1,13 @@
+
+package towerDefense;
+
+public class Turm {
+	private final int posx;
+	private final int posy;
+	
+	Turm(int x, int y){
+		posx = x;
+		posy = y;
+	}
+
+}

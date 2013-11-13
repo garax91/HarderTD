@@ -1,0 +1,48 @@
+package towerDefense;
+
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.image.BufferStrategy;
+
+import javax.swing.JFrame;
+
+public class Frame extends JFrame {
+
+	private BufferStrategy strat;
+
+	public Frame() {
+		//super("MoveTest");
+		addKeyListener(new KeyHandler());
+		addMouseListener(new MouseHandler());
+		addMouseMotionListener(new MouseHandler());
+
+	}
+
+	public void makeStrat() {
+		createBufferStrategy(2);
+		strat = getBufferStrategy();
+	}
+
+	public void repaintScreen() {
+		Graphics g = strat.getDrawGraphics();
+		draw(g);
+		g.dispose();
+		strat.show();
+	}
+
+	private void draw(Graphics g) {
+		g.setColor(Color.RED);
+		
+		//Grundkitter
+		for(int i = 0; i<Spielablauf.spielfeld.length; i++){
+			for(int j = 0; j<Spielablauf.spielfeld[i].length; j++){
+				g.drawRect(i*Spielablauf.quadratGröße, j*Spielablauf.quadratGröße, Spielablauf.quadratGröße, Spielablauf.quadratGröße);
+			}
+		}
+		g.drawRect((Spielablauf.spielfeldBreite+1)*Spielablauf.quadratGröße, Spielablauf.quadratGröße, Spielablauf.quadratGröße*2, Spielablauf.quadratGröße);
+		
+		//Türme
+		
+		
+	}
+}

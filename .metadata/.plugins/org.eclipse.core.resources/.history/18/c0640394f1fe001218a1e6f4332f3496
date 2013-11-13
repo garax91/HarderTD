@@ -1,0 +1,98 @@
+package towerDefense;
+
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
+
+public class MouseHandler implements MouseListener, MouseMotionListener{
+	
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		
+		//Schattenkästechen
+	/*	if(Turm.getTurmAusgewählt() && e.getX()<Spielablauf.spielfeldBreite*Spielablauf.quadratGröße+1){
+			Spielablauf.türme.add(new Turm((e.getX()/Spielablauf.quadratGröße)*Spielablauf.quadratGröße+1, (e.getY()/Spielablauf.quadratGröße)*Spielablauf.quadratGröße+1));
+			Turm.setTurmAusgewählt(false);
+			Spielablauf.spielfeld[e.getX()/Spielablauf.quadratGröße][e.getY()/Spielablauf.quadratGröße] = 1;
+		}
+	*/	
+		
+		//Turm bauen, falls aktiviert und Feld frei
+		if(Turm.getTurmAusgewählt() && e.getX()<Spielablauf.spielfeldBreite*Spielablauf.quadratGröße+1){
+			
+			if(Spielablauf.spielfeld[e.getX()/Spielablauf.quadratGröße][e.getY()/Spielablauf.quadratGröße] == 0){
+			
+				Spielablauf.türme.add(new Turm((e.getX()/Spielablauf.quadratGröße)*Spielablauf.quadratGröße+1, (e.getY()/Spielablauf.quadratGröße)*Spielablauf.quadratGröße+1));
+				Turm.setTurmAusgewählt(false);
+				Spielablauf.spielfeld[e.getX()/Spielablauf.quadratGröße][e.getY()/Spielablauf.quadratGröße] = 1;
+		
+			}
+		}
+		
+		//Knopfdrücken -> Turm bauen aktivieren
+/*		if(e.getX()>(Spielablauf.spielfeldBreite+1)*Spielablauf.quadratGröße && e.getX()<(Spielablauf.spielfeldBreite+1)*Spielablauf.quadratGröße + Spielablauf.quadratGröße*4
+				&& e.getY()>Spielablauf.quadratGröße && e.getY()<Spielablauf.quadratGröße+Spielablauf.quadratGröße){
+			
+			if(Turm.getTurmAusgewählt()==true){
+				Turm.setTurmAusgewählt(false);
+			}
+			else{
+				Turm.setTurmAusgewählt(true);
+			}	
+		}
+*/		//Knopfdrücken -> Turm bauen aktivieren2.0
+		if(Frame.knTurmbau.getBounding().contains(e.getX(), e.getY())){
+			
+			if(Frame.knTurmbau.getAction()==true){
+				Frame.knTurmbau.setAction(false);
+			}
+			else{
+				Frame.knTurmbau.setAction(true);
+			}	
+		}
+		
+		//Beendenknopf
+	/*	if(e.getX()>Spielablauf.spielfeldBreite*Spielablauf.quadratGröße+250 && e.getY()<50){
+			System.exit(0);
+		}
+	*/	//Beendenknopf2.0
+		if(Frame.knBeenden.getBounding().contains(e.getX(), e.getY())){
+			System.exit(0);
+		}
+		
+	}
+	
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+	//	System.out.println("CLICK: position: " + e.getX() + " " + e.getY());
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+	}
+
+	
+	
+	/*MouseMotion*/
+	
+	@Override
+	public void mouseDragged(MouseEvent e) {
+		//System.out.println("test123456");
+		
+	}
+
+	@Override
+	public void mouseMoved(MouseEvent e) {
+	//	System.out.println("position: " + e.getX() + " " + e.getY());
+	}
+	
+}

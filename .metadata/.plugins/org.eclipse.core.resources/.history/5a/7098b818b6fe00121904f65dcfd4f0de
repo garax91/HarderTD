@@ -1,0 +1,28 @@
+package towerDefense;
+
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.image.BufferStrategy;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+
+public class Aktionsleiste extends JFrame {
+
+	private BufferStrategy strat;
+	JButton turm;
+
+	public Aktionsleiste() {
+		//super("MoveTest");
+		addKeyListener(new KeyHandler());
+		addMouseListener(new MouseHandler());
+		addMouseMotionListener(new MouseHandler());
+		
+		turm = new JButton("Turm");
+		turm.setBounds((Spielablauf.spielfeldBreite+1)*Spielablauf.quadratGröße, Spielablauf.quadratGröße, Spielablauf.quadratGröße*2, Spielablauf.quadratGröße);
+		add(turm);
+	}
+
+
+		
+}
