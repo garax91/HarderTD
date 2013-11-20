@@ -9,7 +9,7 @@ public class Wall {
 	private final int posy;
 	private final int arrayCoordX;
 	private final int arrayCoordY;
-	private final static int price = 20;
+	private final static int price = 10;
 	private Color color;
 	
 	Wall(int x, int y, int arrayCoordX, int arrayCoordY){

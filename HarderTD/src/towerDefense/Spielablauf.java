@@ -39,7 +39,7 @@ public class Spielablauf {
 		new BilderLaden();
 		
 		leben = 3;
-		goldCounter = 100;
+		goldCounter = 250;
 		waveCounter = 0;
 		goldFürGegner = 20;
 		türme = new ArrayList<Turm>();
@@ -122,7 +122,8 @@ public class Spielablauf {
 		int result = JOptionPane.showConfirmDialog(null, "Spiel neustarten?", "Neustart", JOptionPane.YES_NO_OPTION);
 		if (result == JOptionPane.YES_OPTION) {
 			spielEnde = false;
-			//starten();
+			Frame.knSpawn.setAction(false);
+			starten();
 		} else if (result == JOptionPane.NO_OPTION) {
 		}
 		

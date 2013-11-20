@@ -1,0 +1,43 @@
+package towerDefense;
+
+import java.awt.Color;
+
+public class Enemy_Schild extends Enemy{
+	
+	private boolean schild = false;
+	private float timeSinceSchild = 0;
+	private float schildDauer = 100;
+
+	public Enemy_Schild(int posy, int width, int height, int leben, Color color) {
+		super(posy, width, height, leben, color);
+	}
+
+	public static void spawn(){
+		spawnAll();
+		
+		for(int i=0; i<5; i++){
+			enemysCounter++;
+			Spielablauf.enemys.add(new Enemy_Schild(i*3+2, Spielablauf.quadratGröße, Spielablauf.quadratGröße, lebenSpawn, Color.PINK));
+		}
+		Spielablauf.LebenGegner = lebenSpawn;
+	}
+	
+	public void lebenVerlieren(int lebendsAbzug){
+		
+		if(getLeben() == Spielablauf.LebenGegner){
+			schild = true;
+			System.out.println("sacreblö");
+			timeSinceSchild = System.currentTimeMillis();
+		}else if(schild && System.currentTimeMillis() - timeSinceSchild >= schildDauer){
+			schild = false;
+		}
+		/***/System.out.println(System.currentTimeMillis() - timeSinceSchild);
+		System.out.println(System.currentTimeMillis());
+		System.out.println(timeSinceSchild);
+		if(schild){
+			setLeben((int)(getLeben()-(lebendsAbzug*0.2)));
+		}else{
+			setLeben(getLeben()-lebendsAbzug);
+		}
+	}
+}

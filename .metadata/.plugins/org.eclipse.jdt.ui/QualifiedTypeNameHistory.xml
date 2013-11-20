@@ -10,7 +10,6 @@
 <fullyQualifiedTypeName name="javax.swing.JDialog"/>
 <fullyQualifiedTypeName name="java.lang.Runnable"/>
 <fullyQualifiedTypeName name="java.util.LinkedList"/>
-<fullyQualifiedTypeName name="java.lang.System"/>
 <fullyQualifiedTypeName name="Baum.Knoten"/>
 <fullyQualifiedTypeName name="towerDefense.Enemy"/>
 <fullyQualifiedTypeName name="towerDefense.Wegfinden"/>
@@ -23,11 +22,15 @@
 <fullyQualifiedTypeName name="towerDefense.MouseHandler"/>
 <fullyQualifiedTypeName name="towerDefense.Turm"/>
 <fullyQualifiedTypeName name="javax.swing.JOptionPane"/>
-<fullyQualifiedTypeName name="java.awt.image.BufferedImage"/>
 <fullyQualifiedTypeName name="towerDefense.BilderLaden"/>
 <fullyQualifiedTypeName name="java.util.Random"/>
 <fullyQualifiedTypeName name="towerDefense.Knopf"/>
 <fullyQualifiedTypeName name="towerDefense.Frame"/>
 <fullyQualifiedTypeName name="java.awt.Color"/>
+<fullyQualifiedTypeName name="towerDefense.Enemy_Speed"/>
+<fullyQualifiedTypeName name="towerDefense.Enemy_Heal"/>
 <fullyQualifiedTypeName name="towerDefense.Spielablauf"/>
+<fullyQualifiedTypeName name="towerDefense.Enemy_Schild"/>
+<fullyQualifiedTypeName name="java.lang.System"/>
+<fullyQualifiedTypeName name="java.awt.image.BufferedImage"/>
 </qualifiedTypeNameHistroy>

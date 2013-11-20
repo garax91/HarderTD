@@ -10,13 +10,13 @@ public class Enemy {
 	private float posx;
 	private float posy;
 	private Rectangle bounding;
-	private BufferedImage bild1;
+	protected BufferedImage bild1;
 	private float speed = 80;
 	private int leben;
-	private static int lebenSpawn;
+	protected static int lebenSpawn;
 	private static float multiplikator = 1; //zum lebenSpawn berechnen
 	private Color color;
-	private static int enemysCounter = 0;
+	protected static int enemysCounter = 0;
 	private static boolean enemysAlive = false;
 	private static Point mittelPunkt;
 	//private int[][] schnellsterWeg = {{Spielablauf.spielfeldBreite/2, 0}, {Spielablauf.spielfeldBreite/2, 11}, {14, 11}, {14, 22}};
@@ -38,43 +38,36 @@ public class Enemy {
 		this.bild1 = BilderLaden.getGegner1();
 		bounding = new Rectangle((int)posx, (int)this.posy, width, height);
 		mittelPunkt = new Point((int)this.posx + bounding.width/2, (int)this.posy + bounding.height/2);
-		
-
-//		schnellsterWeg.add( new Point(Spielablauf.spielfeldBreite/2, 0));
-//		schnellsterWeg.add(new Point(Spielablauf.spielfeldBreite/2, 11));
-//		schnellsterWeg.add(new Point(14,11));
-//		schnellsterWeg.add(new Point(14,4));
-//		schnellsterWeg.add(new Point(2,4));
-//		schnellsterWeg.add(new Point(2,21));
-//		schnellsterWeg.add(new Point(0,21));
-//		schnellsterWeg.add(new Point(0,0));
-//		schnellsterWeg.add(new Point(14,0));
-//		schnellsterWeg.add(new Point(14,22));
 	}
 	
 	public static void spawn(){
-		enemysAlive = true;
-		Spielablauf.waveCounter++;
-		Spielablauf.goldFürGegner += 1;
-		if(Spielablauf.waveCounter % 5 == 0){
-			multiplikator *= 1.5;						//änderung der schwiereigkeitsgrades
-		}
-		lebenSpawn = (int)(Spielablauf.waveCounter*multiplikator*10);
-		Spielablauf.LebenGegner = lebenSpawn;
+		spawnAll();
+		
 		for(int i=0; i<5; i++){
 			enemysCounter++;
 			Spielablauf.enemys.add(new Enemy(i*3+2, Spielablauf.quadratGröße, Spielablauf.quadratGröße, lebenSpawn, Color.PINK));
 		}
+		Spielablauf.LebenGegner = lebenSpawn;
+	}
+	protected static void spawnAll(){
+		enemysAlive = true;
+		Spielablauf.waveCounter++;
+		Spielablauf.goldFürGegner += 1.5;
+		
+		if(Spielablauf.waveCounter % 5 == 0){
+			multiplikator *= 1.5;						//änderung der schwiereigkeitsgrades
+		}else{
+			multiplikator *= 1.001;
+		}
+		lebenSpawn = (int)(Spielablauf.waveCounter*multiplikator*10);
 	}
 	
 	public void update(float timeSinceLastFrame){
 		
 		
-		//simple Gegner zurücksetzen (unterer Rand)
-//		if(spawned && !Spielablauf.spielfeld.contains(bounding.x, bounding.y)){
-//			Spielablauf.enemys.remove(this);
-//			enemysCounter--;
-//		}
+		//leben generieren
+		lebenGenerieren(timeSinceLastFrame);
+		lebenVerlieren(0); //für schildupdate
 		
 	//schnellsten weg gehen:
 		int wegpunktX = (int) (schnellsterWeg.get(indexWeg).getX()*Spielablauf.quadratGröße);
@@ -147,6 +140,10 @@ public class Enemy {
 		leben -= lebendsAbzug;
 	}
 	
+	//Leben generieren (Für healenemy)
+	protected void lebenGenerieren(float timeSinceLastFrame){
+	}
+	
 	
 	
 	public Rectangle getBounding(){
@@ -167,6 +164,9 @@ public class Enemy {
 	public int getLeben(){
 		return leben;
 	}
+	public float getSpeed(){
+		return speed;
+	}
 	public int getIndexWeg(){
 		return indexWeg;
 	}
@@ -182,5 +182,12 @@ public class Enemy {
 //	public void setEnemysAlive(boolean enemysAlive){
 //		Enemy.enemysAlive = enemysAlive;
 //	}
+	
+	void setSpeed(float n){
+		this.speed = n;
+	}
+	void setLeben(int n){
+		this.leben = n;
+	}
 	
 }

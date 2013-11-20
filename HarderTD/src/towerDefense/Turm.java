@@ -85,8 +85,8 @@ public class Turm {
 		turmLevel++;
 		Spielablauf.goldCounter -= priceUpgrade;
 		priceGesammt += priceUpgrade;
-		priceUpgrade *= 2;
-		schaden += 5*turmLevel;
+		priceUpgrade *= 1.55;
+		schaden += 12*turmLevel;
 	}
 	//AtrributeUpgraden
 	public void dmgUP(){
@@ -98,7 +98,7 @@ public class Turm {
 	public void speedUP(){
 		if(priceUpgrade <= Spielablauf.goldCounter && turmLevel <= 9){
 			turmUpgrade();
-			speed -= 0.03;
+			speed -= 0.05;
 		}
 	}
 	public void rangeUP(){
