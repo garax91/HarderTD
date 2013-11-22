@@ -23,8 +23,7 @@ public class Enemy {
 	public static ArrayList<Point> schnellsterWeg = new ArrayList<Point>();
 	private boolean spawned = false;
 	private boolean slow = false;
-	private float timeSinceSlowStart = 0;
-	private float timeSlow = 2;
+	private long timeSlow = 0;
 	private int indexWeg = 0; //index für schnellsterWeg[]
 	int toleranzbereich = Spielablauf.quadratGröße/4;
 
@@ -74,11 +73,7 @@ public class Enemy {
 		
 		//gegner geslowed?
 		if(slow){
-			timeSinceSlowStart += timeSinceLastFrame;
-			if(timeSinceSlowStart >= timeSlow){
-				speed *= 2;
-				slow = false;
-			}
+			
 		}
 		
 	//schnellsten weg gehen:
@@ -158,9 +153,7 @@ public class Enemy {
 	
 	//Enemy slowen
 	public void slowen(){
-		speed /= 2;
 		slow = true;
-		timeSinceSlowStart = 0;
 	}
 	
 	

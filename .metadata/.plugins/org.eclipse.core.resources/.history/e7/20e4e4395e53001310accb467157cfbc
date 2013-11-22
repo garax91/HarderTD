@@ -22,9 +22,6 @@ public class Enemy {
 	//private int[][] schnellsterWeg = {{Spielablauf.spielfeldBreite/2, 0}, {Spielablauf.spielfeldBreite/2, 11}, {14, 11}, {14, 22}};
 	public static ArrayList<Point> schnellsterWeg = new ArrayList<Point>();
 	private boolean spawned = false;
-	private boolean slow = false;
-	private float timeSinceSlowStart = 0;
-	private float timeSlow = 2;
 	private int indexWeg = 0; //index für schnellsterWeg[]
 	int toleranzbereich = Spielablauf.quadratGröße/4;
 
@@ -66,20 +63,11 @@ public class Enemy {
 	}
 	
 	public void update(float timeSinceLastFrame){
-		System.out.println(timeSinceLastFrame);
+		
 		
 		//leben generieren
 		lebenGenerieren(timeSinceLastFrame);
 		lebenVerlieren(0); //für schildupdate
-		
-		//gegner geslowed?
-		if(slow){
-			timeSinceSlowStart += timeSinceLastFrame;
-			if(timeSinceSlowStart >= timeSlow){
-				speed *= 2;
-				slow = false;
-			}
-		}
 		
 	//schnellsten weg gehen:
 		int wegpunktX = (int) (schnellsterWeg.get(indexWeg).getX()*Spielablauf.quadratGröße);
@@ -154,13 +142,6 @@ public class Enemy {
 	
 	//Leben generieren (Für healenemy)
 	protected void lebenGenerieren(float timeSinceLastFrame){
-	}
-	
-	//Enemy slowen
-	public void slowen(){
-		speed /= 2;
-		slow = true;
-		timeSinceSlowStart = 0;
 	}
 	
 	
