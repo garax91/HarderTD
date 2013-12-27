@@ -33,8 +33,24 @@ public class Spielablauf {
 	static ArrayList<Enemy> enemys;
 	static ArrayList<Schuss> schüsse;
 	
+	Frame f = new Frame();
 	
-	public void starten(){
+	public void starten (){
+		
+		//Das startfeld wird blockiert
+		spielfeldarray[Spielablauf.spielfeldBreite/2][0] = 1;
+
+
+		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		f.setSize(spielfeldBreite*quadratGröße+1+aktionsleisteBreite, spielfeldHöhe*quadratGröße+1);
+		f.setUndecorated(true);
+		f.setVisible(true);
+		f.setResizable(false);
+		f.setLocationRelativeTo(null);
+		
+		f.makeStrat();
+	}
+	public void resetGame(){
 		
 		new BilderLaden();
 		
@@ -52,30 +68,30 @@ public class Spielablauf {
 
 	private void spielablauf(){
 		
-		//Das startfeld wird blockiert
-		spielfeldarray[Spielablauf.spielfeldBreite/2][0] = 1;
-		
-//		spielfeldarrayAusgabe();
-		
-		
-		Frame f = new Frame();
-		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		f.setSize(spielfeldBreite*quadratGröße+1+aktionsleisteBreite, spielfeldHöhe*quadratGröße+1);
-		f.setUndecorated(true);
-		f.setVisible(true);
-		f.setResizable(false);
-		f.setLocationRelativeTo(null);
-//		DisplayMode displayMode = new DisplayMode(800, 600, 16, 75);
-//		GraphicsEnvironment environment = GraphicsEnvironment.getLocalGraphicsEnvironment();
-//		GraphicsDevice device = environment.getDefaultScreenDevice();
+//		//Das startfeld wird blockiert
+//		spielfeldarray[Spielablauf.spielfeldBreite/2][0] = 1;
 //		
-//		device.setFullScreenWindow(f);
-//		device.setDisplayMode(displayMode);
-		
-	
-		
-		
-		f.makeStrat();
+////		spielfeldarrayAusgabe();
+//		
+//		
+//		Frame f = new Frame();
+//		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		f.setSize(spielfeldBreite*quadratGröße+1+aktionsleisteBreite, spielfeldHöhe*quadratGröße+1);
+//		f.setUndecorated(true);
+//		f.setVisible(true);
+//		f.setResizable(false);
+//		f.setLocationRelativeTo(null);
+////		DisplayMode displayMode = new DisplayMode(800, 600, 16, 75);
+////		GraphicsEnvironment environment = GraphicsEnvironment.getLocalGraphicsEnvironment();
+////		GraphicsDevice device = environment.getDefaultScreenDevice();
+////		
+////		device.setFullScreenWindow(f);
+////		device.setDisplayMode(displayMode);
+//		
+//	
+//		
+//		
+//		f.makeStrat();
 		
 		long lastFrame = System.currentTimeMillis();
 		while(true){
@@ -123,7 +139,7 @@ public class Spielablauf {
 		if (result == JOptionPane.YES_OPTION) {
 			spielEnde = false;
 			Frame.knSpawn.setAction(false);
-			starten();
+			resetGame();
 		} else if (result == JOptionPane.NO_OPTION) {
 		}
 		

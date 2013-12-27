@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename method &apos;towerDefense.Spielablauf.starten()&apos; to &apos;resetGame&apos;&#x0D;&#x0A;- Original project: &apos;HarderTD&apos;&#x0D;&#x0A;- Original element: &apos;towerDefense.Spielablauf.starten()&apos;&#x0D;&#x0A;- Renamed element: &apos;towerDefense.Spielablauf.resetGame()&apos;&#x0D;&#x0A;- Update references to refactored element" delegate="false" deprecate="false" description="Rename method &apos;starten&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.method" input="/src&lt;towerDefense{Spielablauf.java[Spielablauf~starten" name="resetGame" references="true" stamp="1385718203542" version="1.0"/>
+</session>

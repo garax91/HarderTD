@@ -98,7 +98,7 @@ public class Frame extends JFrame {
 		}
 		
 		if(Spielablauf.spielEnde){
-			g.drawImage(BilderLaden.getFailBild(), 0, 0, null);
+			//g.drawImage(BilderLaden.getFailBild(), 0, 0, null);
 		}else{
 			if(turmmenu){
 				Turm ausgewählterTurm = Spielablauf.türme.get(MouseHandler.turmAuswahlIndex);

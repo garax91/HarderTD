@@ -5,5 +5,6 @@ public class Main {
 		
 		Spielablauf spiel = new Spielablauf();
 		spiel.starten();
+		spiel.resetGame();
 	}
 }
