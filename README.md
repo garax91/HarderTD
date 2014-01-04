@@ -5,4 +5,4 @@ HarderTD
 
 --
 
-..noch nicht fertig
+..noch nicht fertig (it isn`t ready yet)
